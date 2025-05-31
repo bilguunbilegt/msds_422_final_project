@@ -55,7 +55,7 @@ def train_models(X_train, y_train, X_val, y_val):
         Dense(1)
     ])
     nn.compile(optimizer='adam', loss='mse', metrics=['mae'])
-    nn.fit(X_train, y_train, validation_data=(X_val, y_val), 
+    nn.fit(X_train, y_train, validation_data=(X_val, y_val),
            epochs=100, batch_size=16, verbose=0,
            callbacks=[EarlyStopping(patience=10, restore_best_weights=True)])
     models['NeuralNetwork'] = nn
@@ -90,13 +90,17 @@ def evaluate_models(models, X_val, y_val, scaler, output_dir='outputs'):
 # 5. Visualize
 def plot_data(df, output_dir='outputs'):
     os.makedirs(output_dir, exist_ok=True)
+
+    # Correlation Heatmap
     plt.figure(figsize=(10, 8))
-    sns.heatmap(df.select_dtypes(include=[np.number]).corr(), annot=True, fmt=".2f", cmap="coolwarm")
+    corr = df.select_dtypes(include=[np.number]).corr()
+    sns.heatmap(corr, annot=True, fmt=".2f", cmap="coolwarm")
     plt.title("Feature Correlation Heatmap")
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, 'correlation_heatmap.png'))
     plt.close()
 
+    # Daily Trends of Pollutants
     pollutants = ['CO(GT)', 'NOx(GT)', 'NO2(GT)', 'O3(GT)', 'PM2.5', 'PM10']
     df['DateTime'] = pd.to_datetime(df['Date'] + ' ' + df['Time'])
     df.set_index('DateTime', inplace=True)
@@ -104,6 +108,7 @@ def plot_data(df, output_dir='outputs'):
     df[pollutants].resample('D').mean().plot(figsize=(12, 6))
     plt.title('Daily Average Pollutants Over Time')
     plt.ylabel('Concentration')
+    plt.xlabel('Date')
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, 'daily_pollutants.png'))
     plt.close()
