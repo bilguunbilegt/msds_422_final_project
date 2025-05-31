@@ -1,0 +1,31 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Jupyter and Python artifacts
+.ipynb_checkpoints/
+*.ipynb
+*.h5
+*.pkl
+
+# Environment files
+.env
+.venv/
+*.env
+*.venv
+*.egg-info/
+
+# Mac system files
+.DS_Store
+
+# Output folder (OPTIONAL - only if you do NOT want to push it)
+# outputs/
+
+# Logs and reports
+*.log
+
+# IDE/project configs
+.vscode/
+.idea/
