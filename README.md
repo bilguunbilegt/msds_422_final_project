@@ -4,18 +4,16 @@ This repository contains the source code and automation setup for predicting air
 
 ## 📁 Project Structure
 
+```
 .
-├── AirQualityData.csv # Dataset file
-├── models.py # Main Python script for training, evaluation, and plotting
-├── requirements.txt # Python dependencies
-├── outputs/ # Automatically created output folder (models, plots, metrics)
+├── AirQualityData.csv            # Dataset file
+├── models.py                     # Main Python script for training, evaluation, and plotting
+├── requirements.txt              # Python dependencies
+├── outputs/                      # Automatically created output folder (models, plots, metrics)
 └── .github/
-└── workflows/
-└── main.yaml # GitHub Actions workflow for automation
-
-markdown
-Copy
-Edit
+    └── workflows/
+        └── main.yaml             # GitHub Actions workflow for automation
+```
 
 ## 🧠 Models Implemented
 
@@ -62,19 +60,20 @@ git clone https://github.com/yourusername/air-quality-prediction.git
 cd air-quality-prediction
 pip install -r requirements.txt
 python models.py
-✅ Requirements
-Python 3.8+
+```
 
-Packages listed in requirements.txt (includes TensorFlow, pandas, seaborn, scikit-learn, etc.)
+## ✅ Requirements
 
-📌 Next Steps
-Add cross-validation
+- Python 3.8+
+- Packages listed in `requirements.txt` (includes TensorFlow, pandas, seaborn, scikit-learn, etc.)
 
-Explore other ML models like XGBoost or SVR
+## 📌 Next Steps
 
-Build a dashboard for real-time predictions
+- Add cross-validation
+- Explore other ML models like XGBoost or SVR
+- Build a dashboard for real-time predictions
+- Use external datasets for enrichment
 
-Use external datasets for enrichment
+## 📄 License
 
-📄 License
 This project is part of an academic assignment (MSDS 422 - Deep Learning) and is not intended for commercial use.
